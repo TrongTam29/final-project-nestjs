@@ -25,9 +25,6 @@ export class Nutrition extends Model implements NutritionInterface {
     name: string;
 
     @Column
-    image: string;
-
-    @Column
     detail: string;
 
     @HasMany(() => Day)

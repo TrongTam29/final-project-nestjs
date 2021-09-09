@@ -1,6 +1,7 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     Param,
     Patch,
@@ -19,7 +20,12 @@ export class DayController {
 
     @Get('days')
     async getAllDays(): Promise<Day[]> {
-        return this.dayService.getAll();
+        return await this.dayService.getAll();
+    }
+
+    @Delete('deleteDay')
+    async deleteDay(@Query('id') id: number): Promise<any> {
+        return await this.dayService.deleteDay(id)
     }
 
     @Post('create-day')
@@ -30,6 +36,12 @@ export class DayController {
         response.message = 'Successfully';
         response.status = 200;
         return response;
+    }
+
+    //Get Day and Diet to display 
+    @Get('get-day-diet/:nutritionId/:nameDay')
+    async getDayDiet(@Param('nutritionId') nutritionId: number, @Param('nameDay') nameDay: string): Promise<Day> {
+        return await this.dayService.getDay(nutritionId, nameDay)
     }
 
 }

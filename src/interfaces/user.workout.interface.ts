@@ -1,9 +1,9 @@
 export interface UserWorkoutInterface {
     id: number;
-    monday: Array<number>;
-    tuesday: Array<number>;
-    wednesday: Array<number>;
-    thursday: Array<number>;
-    friday: Array<number>;
-    saturday: Array<number>;
+    monday: Array<String>;
+    tuesday: Array<String>;
+    wednesday: Array<String>;
+    thursday: Array<String>;
+    friday: Array<String>;
+    saturday: Array<String>;
 }

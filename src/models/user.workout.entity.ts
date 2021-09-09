@@ -1,17 +1,11 @@
 import {
     AutoIncrement,
-    BelongsTo,
-    BelongsToMany,
     Column,
     DataType,
-    ForeignKey,
-    HasMany,
     HasOne,
-    IsEmail,
     Model,
     PrimaryKey,
     Table,
-    Unique,
 } from 'sequelize-typescript';
 import { UserWorkoutInterface } from 'src/interfaces/user.workout.interface';
 import { User } from './user.entity';
@@ -23,23 +17,28 @@ export class UserWorkout extends Model implements UserWorkoutInterface {
     @Column
     id: number;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    monday: Array<number>;
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    monday: Array<String>;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    tuesday: Array<number>;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    wednesday: Array<number>;
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    tuesday: Array<String>;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    thursday: Array<number>;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    friday: Array<number>;
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    wednesday: Array<String>;
 
-    @Column({ type: DataType.ARRAY(DataType.NUMBER) })
-    saturday: Array<number>;
+
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    thursday: Array<String>;
+
+
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    friday: Array<String>;
+
+
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
+    saturday: Array<String>;
 
     @HasOne(() => User)
     user: User;

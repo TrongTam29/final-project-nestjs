@@ -3,12 +3,10 @@ import { DatabaseConfig } from "src/config/database.config";
 import { Cardio } from "src/models/cardio.entity";
 import { Category } from "src/models/category.entity";
 import { Day } from "src/models/day.entity";
-import { Diet } from "src/models/diet.entity";
 import { Exercise } from "src/models/exercise.entity";
 import { MuscleGroup } from "src/models/muscle.group.entity";
 import { Nutrition } from "src/models/nutrition.entity";
 import { User } from "src/models/user.entity";
-import { UserExercise } from "src/models/user.exercise.entity";
 import { UserWorkout } from "src/models/user.workout.entity";
 import { WorkoutEquipment } from "src/models/workout.equipment.entity";
 
@@ -37,11 +35,9 @@ export const databaseProviders = [
                 Cardio,
                 Category,
                 Day,
-                Diet,
                 Exercise,
                 MuscleGroup,
                 Nutrition,
-                UserExercise,
                 UserWorkout,
                 WorkoutEquipment
             ]);

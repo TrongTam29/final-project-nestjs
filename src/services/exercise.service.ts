@@ -12,7 +12,20 @@ export class ExerciseService {
         return await this.exerciseRepository.findAll();
     }
 
+    async delete(id: number): Promise<any> {
+        return this.exerciseRepository.destroy({ where: { id: id } });
+    }
+
     async createExercise(exercise: Exercise): Promise<Exercise> {
         return await this.exerciseRepository.create(exercise);
     }
+
+    async findAllExerciseById(id: number): Promise<Exercise[]> {
+        return await this.exerciseRepository.findAll({
+            where: { muscleGroupId: id }
+        })
+    }
+
+
+
 }

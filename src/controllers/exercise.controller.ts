@@ -1,6 +1,7 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     Param,
     Patch,
@@ -22,14 +23,29 @@ export class ExerciseController {
         return this.exerciseService.getAll();
     }
 
-    @Post('create-exercise')
-    async createExercise(@Body() exercise: Exercise): Promise<AppResponse<Exercise>> {
-        const response = new AppResponse<Exercise>();
-        response.data = await this.exerciseService.createExercise(exercise);
-        response.success = true;
-        response.message = 'Successfully';
-        response.status = 200;
-        return response;
+    @Delete('delete')
+    async Delete45(@Query('id') id: number): Promise<any> {
+        return this.exerciseService.delete(id);
     }
 
+    @Post('create-exercise')
+    async createExercise(@Body() exercise: Exercise): Promise<Exercise> {
+        return this.exerciseService.createExercise(exercise);
+    }
+
+    //Find exercises in a muscle group
+    // @Get('find-exercises')
+    // async findMuscle(@Query('id') id: number): Promise<AppResponse<Exercise[]>> {
+    //     const response = new AppResponse<Exercise[]>();
+    //     response.data = await this.exerciseService.findAllExerciseById(id);
+    //     response.success = true;
+    //     response.message = 'Successfully';
+    //     response.status = 200;
+    //     return response;
+    // }
+
+    @Get('find-exercises')
+    async findMuscle(@Query('id') id: number): Promise<Exercise[]> {
+        return this.exerciseService.findAllExerciseById(id);
+    }
 }

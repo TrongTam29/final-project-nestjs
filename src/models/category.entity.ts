@@ -16,6 +16,7 @@ import { MuscleGroup } from './muscle.group.entity';
 
 @Table
 export class Category extends Model implements CategoryInterface {
+    @AutoIncrement
     @PrimaryKey
     @Column
     id: number;
@@ -23,8 +24,6 @@ export class Category extends Model implements CategoryInterface {
     @Column
     name: string;
 
-    @Column
-    image: string;
 
     @HasMany(() => MuscleGroup)
     muscleGroups: MuscleGroup[];

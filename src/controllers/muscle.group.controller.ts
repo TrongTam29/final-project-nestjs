@@ -32,4 +32,15 @@ export class MuscleGroupController {
         return response;
     }
 
+    //Find Exercise in which muscle and category
+    @Get('find-exercise-in')
+    async findExerciseIn(@Query('id') id: number): Promise<AppResponse<MuscleGroup>> {
+        const response = new AppResponse<MuscleGroup>();
+        response.data = await this.muscleGroupService.findExerciseById(id);
+        response.success = true;
+        response.message = 'Successfully';
+        response.status = 200;
+        return response;
+    }
+
 }

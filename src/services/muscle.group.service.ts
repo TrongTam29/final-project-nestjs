@@ -1,4 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { Category } from 'src/models/category.entity';
+import { Exercise } from 'src/models/exercise.entity';
 import { MuscleGroup } from 'src/models/muscle.group.entity';
 
 @Injectable()
@@ -14,5 +16,13 @@ export class MuscleGroupService {
 
     async createMuscleGroup(muscle: MuscleGroup): Promise<MuscleGroup> {
         return await this.muscleGroupRepository.create(muscle);
+    }
+
+    async findExerciseById(id: number): Promise<MuscleGroup> {
+        return await this.muscleGroupRepository.findOne({
+            where: { id: id }, include: [
+                Category,
+            ]
+        })
     }
 }

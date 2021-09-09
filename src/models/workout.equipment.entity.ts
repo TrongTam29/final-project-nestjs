@@ -3,6 +3,7 @@ import {
     BelongsTo,
     BelongsToMany,
     Column,
+    DataType,
     ForeignKey,
     HasMany,
     IsEmail,
@@ -23,7 +24,7 @@ export class WorkoutEquipment extends Model implements WorkoutEquipmentInterace 
     @Column
     name: string;
 
-    @Column
+    @Column({ type: DataType.STRING(1000) })
     link: string;
 
     @Column

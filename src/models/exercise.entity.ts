@@ -1,8 +1,10 @@
+import { text } from 'express';
 import {
     AutoIncrement,
     BelongsTo,
     BelongsToMany,
     Column,
+    DataType,
     ForeignKey,
     HasMany,
     IsEmail,
@@ -14,7 +16,6 @@ import {
 import { ExerciseInterface } from 'src/interfaces/exercise.interface';
 import { MuscleGroup } from './muscle.group.entity';
 import { User } from './user.entity';
-import { UserExercise } from './user.exercise.entity';
 
 @Table
 export class Exercise extends Model implements ExerciseInterface {
@@ -30,6 +31,9 @@ export class Exercise extends Model implements ExerciseInterface {
     link: string;
 
     @Column
+    image: string;
+
+    @Column
     reps: string;
 
     @Column
@@ -38,7 +42,7 @@ export class Exercise extends Model implements ExerciseInterface {
     @Column
     break: string;
 
-    @Column
+    @Column({ type: DataType.STRING(1000) })
     detail: string;
 
     @ForeignKey(() => MuscleGroup)
@@ -48,9 +52,5 @@ export class Exercise extends Model implements ExerciseInterface {
     @BelongsTo(() => MuscleGroup)
     muscleGroup: MuscleGroup;
 
-    @HasMany(() => UserExercise)
-    userExercises: UserExercise[];
-
-    @BelongsToMany(() => User, () => UserExercise)
-    users: User[];
 }
+

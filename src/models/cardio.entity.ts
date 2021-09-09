@@ -23,6 +23,9 @@ export class Cardio extends Model implements CardioInterface {
     @Column
     name: string;
 
+    // @Column
+    // image: string;
+
     @Column
     link: string
 }

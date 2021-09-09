@@ -18,15 +18,13 @@ import { Exercise } from './exercise.entity';
 
 @Table
 export class MuscleGroup extends Model implements MuscleGroupInterface {
+    @AutoIncrement
     @PrimaryKey
     @Column
     id: number;
 
     @Column
     name: string;
-
-    @Column
-    image: string;
 
     @ForeignKey(() => Category)
     @Column
