@@ -28,10 +28,10 @@ import { userWorkoutProviders } from 'src/providers/user.workout.provider';
 import { UserWorkoutService } from 'src/services/user.workout.service';
 import { WorkoutEquipmentService } from 'src/services/workout.equipment';
 import { workoutEquipmentProviders } from 'src/providers/workoutEquipment.provider';
-import { ArticleService } from 'src/services/article.service';
-import { articleProviders } from 'src/providers/article.provider';
-import { ArticleModule } from './article.module';
 import { AppGateway } from 'src/app.gateway';
+import { ExerciseCommentService } from 'src/services/exercise.comment.service';
+import { exerciseCommentProviders } from 'src/providers/exercise.comment.provider';
+import { ExerciseCommentModule } from './exercise.comment.module';
 
 @Module({
   imports: [
@@ -40,10 +40,10 @@ import { AppGateway } from 'src/app.gateway';
     CategoryModule,
     DayModule,
     ExerciseModule,
+    ExerciseCommentModule,
     MuscleGroupModule,
     UserModule,
     UserWorkoutModule,
-    ArticleModule,
     WorkoutEquipmentModule],
   controllers: [AppController],
   providers: [
@@ -58,6 +58,8 @@ import { AppGateway } from 'src/app.gateway';
     ...dayProviders,
     ExerciseService,
     ...exerciseProviders,
+    ExerciseCommentService,
+    ...exerciseCommentProviders,
     MuscleGroupService,
     ...muscleGroupProviders,
     UserService,
@@ -66,8 +68,8 @@ import { AppGateway } from 'src/app.gateway';
     ...userWorkoutProviders,
     WorkoutEquipmentService,
     ...workoutEquipmentProviders,
-    ArticleService,
-    ...articleProviders,
+    ExerciseCommentService,
+    ...exerciseCommentProviders,
     AppGateway,
   ],
 })

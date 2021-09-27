@@ -7,12 +7,12 @@ import {
     PrimaryKey,
     Table,
 } from 'sequelize-typescript';
-import { ArticleCommentInterface } from '../interfaces/article.comment.interface';
-import { Article } from './article.entity';
+import { ExerciseCommentInterface } from '../interfaces/exercise.comment.interface';
+import { Exercise } from './exercise.entity';
 import { User } from './user.entity';
 
 @Table
-export class ArticleComment extends Model implements ArticleCommentInterface {
+export class ExerciseComment extends Model implements ExerciseCommentInterface {
     @AutoIncrement
     @PrimaryKey
     @Column
@@ -22,15 +22,15 @@ export class ArticleComment extends Model implements ArticleCommentInterface {
     @Column
     userId: number;
 
+    @ForeignKey(() => Exercise)
+    @Column
+    exerciseId: number;
+
     @Column
     comment: string;
 
-    @ForeignKey(() => Article)
-    @Column
-    postId: number;
-
-    @BelongsTo(() => Article)
-    post: Article;
+    @BelongsTo(() => Exercise)
+    exercise: Exercise;
 
     @BelongsTo(() => User)
     user: User;

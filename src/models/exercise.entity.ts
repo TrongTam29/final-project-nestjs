@@ -14,6 +14,7 @@ import {
     Unique,
 } from 'sequelize-typescript';
 import { ExerciseInterface } from 'src/interfaces/exercise.interface';
+import { ExerciseComment } from './exercise.comment.entity';
 import { MuscleGroup } from './muscle.group.entity';
 import { User } from './user.entity';
 
@@ -51,6 +52,9 @@ export class Exercise extends Model implements ExerciseInterface {
 
     @BelongsTo(() => MuscleGroup)
     muscleGroup: MuscleGroup;
+
+    @HasMany(() => ExerciseComment)
+    ecerciseComment: ExerciseComment;
 
 }
 

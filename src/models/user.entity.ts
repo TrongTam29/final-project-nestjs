@@ -5,6 +5,7 @@ import {
     Column,
     ForeignKey,
     HasMany,
+    HasOne,
     IsEmail,
     Model,
     PrimaryKey,
@@ -12,6 +13,7 @@ import {
     Unique,
 } from 'sequelize-typescript';
 import { UserInterface } from 'src/interfaces/user.interface';
+import { ExerciseComment } from './exercise.comment.entity';
 import { Exercise } from './exercise.entity';
 import { UserWorkout } from './user.workout.entity';
 
@@ -23,11 +25,17 @@ export class User extends Model implements UserInterface {
     id: number;
 
     @Column
-    account: string;
+    name: string;
 
-    @ForeignKey(() => UserWorkout)
-    userWorkoutId: number;
+    @Column
+    email: string;
 
-    @BelongsTo(() => UserWorkout)
+    @Column
+    image: string;
+
+    @HasOne(() => UserWorkout)
     userWorkout: UserWorkout;
+
+    @HasMany(() => ExerciseComment)
+    exerciseComment: ExerciseComment;
 }

@@ -1,5 +1,6 @@
 export interface UserInterface {
     id: number;
-    account: string;
-    userWorkoutId: number;
+    name: string;
+    email: string;
+    image: string;
 }

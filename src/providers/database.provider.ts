@@ -3,6 +3,7 @@ import { DatabaseConfig } from "src/config/database.config";
 import { Cardio } from "src/models/cardio.entity";
 import { Category } from "src/models/category.entity";
 import { Day } from "src/models/day.entity";
+import { ExerciseComment } from "src/models/exercise.comment.entity";
 import { Exercise } from "src/models/exercise.entity";
 import { MuscleGroup } from "src/models/muscle.group.entity";
 import { Nutrition } from "src/models/nutrition.entity";
@@ -39,7 +40,8 @@ export const databaseProviders = [
                 MuscleGroup,
                 Nutrition,
                 UserWorkout,
-                WorkoutEquipment
+                WorkoutEquipment,
+                ExerciseComment,
             ]);
             await sequelize.sync();
             return sequelize;

@@ -26,6 +26,8 @@ export class ExerciseService {
         })
     }
 
-
+    async findExerciseByLink(link: string): Promise<Exercise> {
+        return await this.exerciseRepository.findOne({ where: { link: link } })
+    }
 
 }

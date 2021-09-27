@@ -1,7 +1,9 @@
 import {
     AutoIncrement,
+    BelongsTo,
     Column,
     DataType,
+    ForeignKey,
     HasOne,
     Model,
     PrimaryKey,
@@ -40,6 +42,10 @@ export class UserWorkout extends Model implements UserWorkoutInterface {
     @Column({ type: DataType.ARRAY(DataType.STRING) })
     saturday: Array<String>;
 
-    @HasOne(() => User)
+    @ForeignKey(() => User)
+    userId: number;
+
+    @BelongsTo(() => User)
     user: User;
+
 }

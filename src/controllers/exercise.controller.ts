@@ -10,6 +10,7 @@ import {
     Req,
     UseGuards,
 } from '@nestjs/common';
+import { link } from 'fs';
 import { Exercise } from 'src/models/exercise.entity';
 import { ExerciseService } from 'src/services/exercise.service';
 import AppResponse from 'src/utils/app.response';
@@ -34,18 +35,13 @@ export class ExerciseController {
     }
 
     //Find exercises in a muscle group
-    // @Get('find-exercises')
-    // async findMuscle(@Query('id') id: number): Promise<AppResponse<Exercise[]>> {
-    //     const response = new AppResponse<Exercise[]>();
-    //     response.data = await this.exerciseService.findAllExerciseById(id);
-    //     response.success = true;
-    //     response.message = 'Successfully';
-    //     response.status = 200;
-    //     return response;
-    // }
-
     @Get('find-exercises')
     async findMuscle(@Query('id') id: number): Promise<Exercise[]> {
         return this.exerciseService.findAllExerciseById(id);
+    }
+
+    @Get('find-exercise-by-link')
+    async findExerciseById(@Query('link') link: string): Promise<Exercise> {
+        return this.exerciseService.findExerciseByLink(link);
     }
 }
