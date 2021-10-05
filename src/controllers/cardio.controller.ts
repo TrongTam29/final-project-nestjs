@@ -9,6 +9,7 @@ import {
     Req,
     UseGuards,
 } from '@nestjs/common';
+import { link } from 'fs';
 import { Cardio } from 'src/models/cardio.entity';
 import { CardioService } from 'src/services/cardio.service';
 import AppResponse from 'src/utils/app.response';
@@ -23,13 +24,12 @@ export class CardioController {
     }
 
     @Post('create-cardio')
-    async createCardio(@Body() cardio: Cardio): Promise<AppResponse<Cardio>> {
-        const response = new AppResponse<Cardio>();
-        response.data = await this.cardioService.createCardio(cardio);
-        response.success = true;
-        response.message = 'Successfully';
-        response.status = 200;
-        return response;
+    async createCardio(@Body() cardio: Cardio): Promise<Cardio> {
+        return await this.cardioService.createCardio(cardio);
     }
 
+    @Get('find-cardio-by-link')
+    async findCardioByLink(@Query('link') link: string): Promise<Cardio> {
+        return await this.cardioService.findCardioByLink(link);
+    }
 }

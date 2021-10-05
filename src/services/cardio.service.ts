@@ -15,4 +15,9 @@ export class CardioService {
     async createCardio(cardio: Cardio): Promise<Cardio> {
         return await this.cardioRepository.create(cardio);
     }
+
+    async findCardioByLink(link: string): Promise<Cardio> {
+
+        return await this.cardioRepository.findOne({ where: { link: link } })
+    }
 }
