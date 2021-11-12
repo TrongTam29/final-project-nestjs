@@ -17,8 +17,8 @@ import AppResponse from 'src/utils/app.response';
 export class NutritionController {
     constructor(private readonly nutritionService: NutritionService) { }
 
-    @Get('nutritions')
-    async getAllUsers(): Promise<Nutrition[]> {
+    @Get('nutrition')
+    async getAll(): Promise<Nutrition[]> {
         return this.nutritionService.getAll();
     }
 
